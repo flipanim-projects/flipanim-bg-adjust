@@ -1,0 +1,80 @@
+body,
+html {
+    border-radius: 20px !important;
+}
+
+* {
+    margin: 0
+}
+
+body {
+    background: #111130;
+    padding: 30px;
+}
+
+h1,
+h2 {
+    color: white;
+    font-family: Inter, Public Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+h1 {
+    font-weight: 200;
+}
+
+h2 {
+    font-weight: 300;
+    font-style: italic;
+    width: max-content;
+    opacity: 0.6;
+}
+
+hr {
+    margin: 10px 0;
+    opacity: 0.2;
+}
+
+p {
+    color: white;
+}
+
+button,
+input[type=color] {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-color-swatch-wrapper,
+input[type=color] {
+    padding: 0px;
+    background: 0;
+    border: 0;
+}
+
+::-webkit-color-swatch {
+    border-radius: 10px;
+    margin: 0;
+}
+
+[style="display:flex"]>div,
+button {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 3px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 2px rgba(255, 255, 255, 0.2)
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 rgba(255, 255, 255, 0.2)
+}
