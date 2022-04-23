@@ -1,5 +1,5 @@
 let color
-let $ = function(id) {
+var $ = function(id) {
     return document.querySelector(id)
 }
 onload = () => {
@@ -24,7 +24,7 @@ $('#set').onclick = async() => {
 
 function setBackground() {
     chrome.storage.sync.get(["mainColor", "bodyColor"], ({ mainColor, bodyColor }) => {
-        $('.main').style.backgroundColor = mainColor;
+        document.querySelector('.main').style.backgroundColor = mainColor;
         document.body.style.backgroundColor = bodyColor
         let browseIcons = document.querySelectorAll('.browse_item a>div>div')
         for (let i = 0; i < browseIcons.length; i++) {
