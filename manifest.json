@@ -1,10 +1,10 @@
 {
     "name": "FlipAnim Background Adjust",
     "description": "Adjust the background of flipanim.com",
-    "version": "1.0",
+    "version": "1.0.1",
     "manifest_version": 3,
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "onInstalled.js"
     },
     "content_scripts": [{
         "matches": ["https://*.flipanim.com/*"],
