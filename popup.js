@@ -17,7 +17,7 @@ $('#set').onclick = async() => {
         target: { tabId: tab.id }, 
         function: setBackground, // update the site with the new colors
     });
-    var main = $'#mainBg').value,
+    var main = $('#mainBg').value,
         body = $('#bodyBg').value
     chrome.storage.sync.set({ mainColor: main, bodyColor: body })
 }
