@@ -1,38 +1,32 @@
-let color = {
-    main: '',
-    body: ''
+let color
+let $ = function(id,all) {
+    return all ? document.querySelectorAll(id) : document.querySelector(id)
 }
 onload = () => {
-    chrome.storage.sync.get(["mainColor", "bodyColor"], ({
-        mainColor,
-        bodyColor
-    }) => {
-        document.getElementById('bodyBg').value = bodyColor,
-            document.getElementById('mainBg').value = mainColor;
-        color.main = mainColor
-        color.body = bodyColor
+    chrome.storage.sync.get(["mainColor", "bodyColor"], ({ mainColor, bodyColor }) => {
+        $('#bodyBg').value = bodyColor,
+            $('#mainBg').value = mainColor;
+        color = { main: mainColor, body: bodyColor }
     });
 }
 
-// When the input, inject setPageBackgroundColor into current page
-document.body.addEventListener("input", () => {});
-
-document.getElementById('set').onclick = async() => {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+// When the user changes the background color:
+$('#set').onclick = async() => {
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true }); // get current tab
     chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        function: bga,
+        target: { tabId: tab.id }, 
+        function: setBackground, // update the site with the new colors
     });
-    var main = document.getElementById('mainBg').value,
-        body = document.getElementById('bodyBg').value
+    var main = $'#mainBg').value,
+        body = $('#bodyBg').value
     chrome.storage.sync.set({ mainColor: main, bodyColor: body })
 }
 
-function bga() {
+function setBackground() {
     chrome.storage.sync.get(["mainColor", "bodyColor"], ({ mainColor, bodyColor }) => {
-        document.querySelector('.main').style.backgroundColor = mainColor;
+        $('.main').style.backgroundColor = mainColor;
         document.body.style.backgroundColor = bodyColor
-        let browseIcons = document.querySelectorAll('.browse_item a>div>div')
+        let browseIcons = $('.browse_item a>div>div', true)
         for (let i = 0; i < browseIcons.length; i++) {
             browseIcons[i].style.backgroundColor = mainColor
         }
