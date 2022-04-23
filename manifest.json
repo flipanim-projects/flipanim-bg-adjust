@@ -15,10 +15,10 @@
     "action": {
         "default_popup": "popup.html",
         "default_icon": {
-            "128": "log.png"
+            "128": "logo.png"
         }
     },
     "icons": {
-        "128": "log.png"
+        "128": "logo.png"
     }
 }
